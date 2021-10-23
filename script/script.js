@@ -10,63 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextButton = document.querySelector("#next");
   const sendButton = document.querySelector("#send");
 
-  const model = {
-    defaults: {
-      question: {
-        className: "question",
-      },
-      answer: {
-        className: "answer",
-        onClick: (quest) => quest.next(),
-      },
-      screen: {
-        className: "screen",
-      },
-    },
-    questions: [
-      {
-        title: "выберите лишнее",
-        answers: [
-          { title: "mac os" },
-          { title: "windows" },
-          { title: "linux" },
-        ],
-      },
-      {
-        title: "пробелы или табуляция?",
-        answers: [
-          { title: "два пробела" },
-          { title: "четыре пробела" },
-          {
-            title: "табуляция",
-            onClick: (quest) => quest.show("fail"),
-          },
-        ],
-      },
-      {
-        title: "История это",
-        className: "question trollface",
-        answers: [
-          {
-            title: "наука",
-            onClick: (quest) => quest.show("fail"),
-          },
-          { title: "не наука" },
-        ],
-      },
-    ],
-    screens: {
-      finish: {
-        className: "screen success",
-        title: "Прекрасно, вы прошли наше задание",
-      },
-      fail: {
-        className: "screen fail",
-        title: "Извините, вы ошиблись",
-      },
-    },
-  };
-
   const questions = [
     {
       question: "Какого года рождения Андрей?",
@@ -154,8 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // FUNCTIONS
   const playTest = () => {
-    const finalAnswers = [];
-    let numbersQuestion = 0;
+    sendButton.classList.add("d-none");
+    let numbersQuestion = 0;  
 
     const renderAnswers = (index, counter) => {
       questions[index].answers.forEach((answer) => {
